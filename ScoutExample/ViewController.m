@@ -15,53 +15,61 @@
 @import CoreData;
 @import SystemConfiguration;
 
-static NSString *const GoogleAnalyticsTrackingId = @"UA-52714436-1";
-static NSString *const GoogleAnalyticsSchemeSeparator = @" ";
+static NSString *const GoogleAnalyticsTrackingId            = @"UA-52714436-1";
+static const NSTimeInterval GoogleAnalyticsDispatchInterval = 5.0;
+static NSString *const GoogleAnalyticsCategory              = @"scout";
+static NSString *const GoogleAnalyticsAction                = @"discover";
+static NSString *const GoogleAnalyticsSchemeSeparator       = @",";
 
 
 @implementation ViewController
             
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
+    
     [self p_setUpTracker];
-    
-    
-    
-    
-    NSSet *schemeSet = [NSMutableSet setWithArray:@[@"kayak", @"trivago", @"ebookers", @"maps", @"http"]];
-    
+    [self p_discoverAndTrackSchemes];
+}
+
+
+#pragma mark - Discovery
+
+- (void)p_discoverAndTrackSchemes
+{
+    NSSet *schemeSet = [NSMutableSet setWithArray:@[@"maps", @"http"]];
     [US2Scout discoverSchemes:schemeSet withCompletion:^(NSSet *discoveredSchemes) {
         NSLog(@"discoveredSchemes: %@", discoveredSchemes);
         
         [self p_trackDiscoveredSchemes:discoveredSchemes];
     }];
-    
-    [super viewDidLoad];
 }
+
+
+#pragma mark - Tracking
 
 - (void)p_setUpTracker
 {
-    [GAI sharedInstance].dispatchInterval = 5;
+    [GAI sharedInstance].dispatchInterval = GoogleAnalyticsDispatchInterval;
     [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
     [[GAI sharedInstance] trackerWithTrackingId:GoogleAnalyticsTrackingId];
 }
 
 - (void)p_trackDiscoveredSchemes:(NSSet *)schemes
 {
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];    
-    NSString *trackingLabel = [self p_buildTrackingLabelFromSet:schemes];
-    NSDictionary *eventData = [[GAIDictionaryBuilder createEventWithCategory:@"scout"
-                                                                      action:@"discovered"
-                                                                       label:trackingLabel
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    NSString *trackerLabel = [self p_trackerLabelFromSet:schemes];
+    NSDictionary *eventData = [[GAIDictionaryBuilder createEventWithCategory:GoogleAnalyticsCategory
+                                                                      action:GoogleAnalyticsAction
+                                                                       label:trackerLabel
                                                                        value:nil] build];
     [tracker send:eventData];
 }
 
-- (NSString *)p_buildTrackingLabelFromSet:(NSSet *)set
+- (NSString *)p_trackerLabelFromSet:(NSSet *)set
 {
-    NSString *trackingLabel = [[set allObjects] componentsJoinedByString:GoogleAnalyticsSchemeSeparator];
-    
-    return trackingLabel;
+    NSString *trackerLabel = [[set allObjects] componentsJoinedByString:GoogleAnalyticsSchemeSeparator];
+    return trackerLabel;
 }
 
 @end
