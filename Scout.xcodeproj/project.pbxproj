@@ -13,9 +13,9 @@
 		5B972B62196EAAB0002C445D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B972B61196EAAB0002C445D /* ViewController.m */; };
 		5B972B65196EAAB0002C445D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B972B63196EAAB0002C445D /* Main.storyboard */; };
 		5B972B67196EAAB0002C445D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B972B66196EAAB0002C445D /* Images.xcassets */; };
-		5B972B73196EAAB0002C445D /* ScoutTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B972B72196EAAB0002C445D /* ScoutTests.m */; };
 		5BCC7EEC196EADC7009CA909 /* US2Scout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCC7EEB196EADC7009CA909 /* US2Scout.m */; };
 		5BCC7EFE196ECB6E009CA909 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BCC7EFD196ECB6E009CA909 /* libGoogleAnalyticsServices.a */; };
+		A7BE037A196EEDB1001BB9BD /* US2ScoutTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = A7BE0379196EEDB1001BB9BD /* US2ScoutTestCase.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +41,6 @@
 		5B972B66196EAAB0002C445D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5B972B6C196EAAB0002C445D /* ScoutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScoutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B972B71196EAAB0002C445D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5B972B72196EAAB0002C445D /* ScoutTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScoutTests.m; sourceTree = "<group>"; };
 		5BCC7EEA196EADC7009CA909 /* US2Scout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = US2Scout.h; sourceTree = "<group>"; };
 		5BCC7EEB196EADC7009CA909 /* US2Scout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = US2Scout.m; sourceTree = "<group>"; };
 		5BCC7EF3196ECB6E009CA909 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
@@ -55,6 +54,7 @@
 		5BCC7EFB196ECB6E009CA909 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
 		5BCC7EFC196ECB6E009CA909 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
 		5BCC7EFD196ECB6E009CA909 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		A7BE0379196EEDB1001BB9BD /* US2ScoutTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = US2ScoutTestCase.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,8 +123,8 @@
 		5B972B6F196EAAB0002C445D /* ScoutTests */ = {
 			isa = PBXGroup;
 			children = (
-				5B972B72196EAAB0002C445D /* ScoutTests.m */,
 				5B972B70196EAAB0002C445D /* Supporting Files */,
+				A7BE0379196EEDB1001BB9BD /* US2ScoutTestCase.m */,
 			);
 			path = ScoutTests;
 			sourceTree = "<group>";
@@ -284,7 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B972B73196EAAB0002C445D /* ScoutTests.m in Sources */,
+				A7BE037A196EEDB1001BB9BD /* US2ScoutTestCase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
