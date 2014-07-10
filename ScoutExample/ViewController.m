@@ -7,12 +7,19 @@
 //
 
 #import "ViewController.h"
+#import "US2Scout.h"
 
 
 @implementation ViewController
             
 - (void)viewDidLoad
 {
+    NSSet *schemeSet = [NSMutableSet setWithArray:@[@"kayak", @"trivago", @"ebookers", @"maps", @"safari"]];
+    
+    [US2Scout discoverSchemes:schemeSet withCompletion:^(NSSet *discoveredSchemes) {
+        NSLog(@"discoveredSchemes: %@", discoveredSchemes);
+    }];
+    
     [super viewDidLoad];
 }
 

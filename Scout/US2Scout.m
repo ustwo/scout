@@ -10,4 +10,32 @@
 
 @implementation US2Scout
 
++ (void)discoverSchemes:(NSSet *)schemes withCompletion:(void(^)(NSSet *discoveredSchemes))completion
+{
+    NSMutableSet *discoveredSchemes = [NSMutableSet set];
+    [schemes enumerateObjectsUsingBlock:^(NSString *scheme, BOOL *stop) {
+        NSAssert([scheme class] != [NSString class], @"Scheme must be a NSString.");
+        
+        BOOL exists = [US2Scout doesSchemeExist:scheme];
+        if (exists)
+        {
+            [discoveredSchemes addObject:scheme];
+        }
+    }];
+    
+    if (completion)
+    {
+        completion([discoveredSchemes copy]);
+    }
+}
+
++ (BOOL)doesSchemeExist:(NSString *)scheme
+{
+    UIApplication *application = [UIApplication sharedApplication];
+    NSURL *schemeUrl = [[NSURL alloc] initWithScheme:scheme host:nil path:@"/"];
+    BOOL exists = [application canOpenURL:schemeUrl];
+    
+    return exists;
+}
+
 @end

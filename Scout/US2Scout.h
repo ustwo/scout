@@ -6,8 +6,10 @@
 //  Copyright (c) 2014 ustwo. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface US2Scout : NSObject
+
++ (void)discoverSchemes:(NSSet *)schemes withCompletion:(void(^)(NSSet *discoveredSchemes))completion;
 
 @end
