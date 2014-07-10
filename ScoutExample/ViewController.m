@@ -48,9 +48,7 @@ static NSString *const GoogleAnalyticsSchemeSeparator = @" ";
 
 - (void)p_trackDiscoveredSchemes:(NSSet *)schemes
 {
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker set:kGAIScreenName value:@"Home Screen"];
-    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];    
     NSString *trackingLabel = [self p_buildTrackingLabelFromSet:schemes];
     NSDictionary *eventData = [[GAIDictionaryBuilder createEventWithCategory:@"scout"
                                                                       action:@"discovered"
