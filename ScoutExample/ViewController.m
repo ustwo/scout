@@ -76,7 +76,10 @@ static NSString *const GoogleAnalyticsSchemeSeparator       = @",";
 
 - (NSString *)p_trackerLabelFromSet:(NSSet *)set
 {
-    NSString *trackerLabel = [[set allObjects] componentsJoinedByString:GoogleAnalyticsSchemeSeparator];
+    NSArray *array = [set allObjects];
+    NSArray *sortedArray = [array sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    
+    NSString *trackerLabel = [sortedArray componentsJoinedByString:GoogleAnalyticsSchemeSeparator];
     return trackerLabel;
 }
 
