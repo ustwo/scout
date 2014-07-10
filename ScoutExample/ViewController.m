@@ -21,9 +21,8 @@ static NSString *const GoogleAnalyticsCategory              = @"scout";
 static NSString *const GoogleAnalyticsAction                = @"discover";
 static NSString *const GoogleAnalyticsSchemeSeparator       = @",";
 
-
 @implementation ViewController
-            
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -39,7 +38,16 @@ static NSString *const GoogleAnalyticsSchemeSeparator       = @",";
 {
     NSSet *schemeSet = [NSMutableSet setWithArray:@[@"maps", @"http"]];
     [US2Scout discoverSchemes:schemeSet withCompletion:^(NSSet *discoveredSchemes) {
-        NSLog(@"discoveredSchemes: %@", discoveredSchemes);
+
+        NSMutableString *text = [[NSMutableString alloc] initWithString:@"Discovered schemes:\n\n"];
+
+        NSArray *schemes = [discoveredSchemes allObjects];
+        for (NSString *scheme in schemes)
+        {
+            [text appendFormat:@"\t• %@\n", scheme];
+        }
+
+        self.label.text = text;
         
         [self p_trackDiscoveredSchemes:discoveredSchemes];
     }];
