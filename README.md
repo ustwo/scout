@@ -5,7 +5,7 @@ Scout discovers apps installed on an iOS device utilising the URL scheme feature
 ### Usage
 
 ```objc
-NSSet *schemeSet = [NSMutableSet setWithArray:@[@"maps", @"http"]];
+NSSet *schemeSet = [NSSet setWithObjects:@"maps", @"http", nil];
 [US2Scout discoverSchemes:schemeSet withCompletion:^(NSSet *discoveredSchemes) {
     NSLog(@"discoveredSchemes: %@", discoveredSchemes);
     // Evaluate data
