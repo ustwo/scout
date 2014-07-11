@@ -37,20 +37,19 @@ static NSString *const GoogleAnalyticsSchemeSeparator       = @",";
 - (void)p_discoverAndTrackSchemes
 {
     NSSet *schemeSet = [NSMutableSet setWithArray:@[@"maps", @"http"]];
-    [US2Scout discoverSchemes:schemeSet withCompletion:^(NSSet *discoveredSchemes) {
+    NSSet *discoveredSchemes = [US2Scout discoverSchemes:schemeSet];
 
-        NSMutableString *text = [[NSMutableString alloc] initWithString:@"Discovered schemes:\n\n"];
+    NSMutableString *text = [[NSMutableString alloc] initWithString:@"Discovered schemes:\n\n"];
 
-        NSArray *schemes = [discoveredSchemes allObjects];
-        for (NSString *scheme in schemes)
-        {
-            [text appendFormat:@"\t• %@\n", scheme];
-        }
+    NSArray *schemes = [discoveredSchemes allObjects];
+    for (NSString *scheme in schemes)
+    {
+        [text appendFormat:@"\t• %@\n", scheme];
+    }
 
-        self.label.text = text;
-        
-        [self p_trackDiscoveredSchemes:discoveredSchemes];
-    }];
+    self.label.text = text;
+
+    [self p_trackDiscoveredSchemes:discoveredSchemes];
 }
 
 

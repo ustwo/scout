@@ -10,7 +10,7 @@
 
 @implementation US2Scout
 
-+ (void)discoverSchemes:(NSSet *)schemes withCompletion:(void(^)(NSSet *discoveredSchemes))completion
++ (NSSet *)discoverSchemes:(NSSet *)schemes
 {
     NSMutableSet *discoveredSchemes = [NSMutableSet set];
     [schemes enumerateObjectsUsingBlock:^(NSString *scheme, BOOL *stop) {
@@ -23,10 +23,7 @@
         }
     }];
     
-    if (completion)
-    {
-        completion([discoveredSchemes copy]);
-    }
+    return [discoveredSchemes copy];
 }
 
 + (BOOL)doesSchemeExist:(NSString *)scheme

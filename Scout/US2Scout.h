@@ -10,6 +10,6 @@
 
 @interface US2Scout : NSObject
 
-+ (void)discoverSchemes:(NSSet *)schemes withCompletion:(void(^)(NSSet *discoveredSchemes))completion;
++ (NSSet *)discoverSchemes:(NSSet *)schemes;
 
 @end
