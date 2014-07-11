@@ -18,13 +18,13 @@
 
 - (void)testDiscoverSchemesWithCompletion
 {
-    NSString *mapsURLScheme = @"maps", *safariURLScheme = @"http", *fakeURLScheme = @"fake";
+    NSString *mapsURLScheme = @"maps", *httpURLScheme = @"http", *fakeURLScheme = @"fake";
 
-    NSSet *schemeSet = [NSMutableSet setWithArray:@[mapsURLScheme, safariURLScheme, fakeURLScheme]];
+    NSSet *schemeSet = [NSSet setWithObjects:mapsURLScheme, httpURLScheme, fakeURLScheme, nil];
     [US2Scout discoverSchemes:schemeSet withCompletion:^(NSSet *discoveredSchemes) {
 
         XCTAssertTrue([discoveredSchemes containsObject:mapsURLScheme], @"maps URL scheme was not correctly discovered");
-        XCTAssertTrue([discoveredSchemes containsObject:safariURLScheme], @"safari URL scheme was not correctly discovered");
+        XCTAssertTrue([discoveredSchemes containsObject:httpURLScheme], @"http URL scheme was not correctly discovered");
         XCTAssertFalse([discoveredSchemes containsObject:fakeURLScheme], @"fake URL scheme was incorrectly discovered");
     }];
 }
